@@ -1,13 +1,26 @@
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import Mainlayout from "./layout/Mainlayout";
+import Details from "./pages/Details";
+import Favorite from "./pages/Favorite";
+import Home from "./pages/Home";
+
 function App() {
-  return (
-    <>
-      <div>
-        <p className="bg-slate-500 text-xl mx-2">Trying tailwind</p>
-        <h2 className='text-center blur-md'>Food Recipe</h2>
-        <p className='bg-slate-900 text-red-700'>Tailwind now working</p>
-      </div>
-    </>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Mainlayout />}>
+        <Route index element={<Home />} />
+        <Route path="/favorites" element={<Favorite />} />
+        <Route path="/recipe-item/:id" element={<Details />} />
+      </Route>
+    )
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

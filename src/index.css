@@ -11,3 +11,9 @@
 nav{
   width: 90% !important;
 }
+
+img{
+  max-width: 100%;
+  width: 276px;
+  height: 276px;
+}

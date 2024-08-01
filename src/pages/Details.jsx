@@ -3,7 +3,12 @@ import { useParams } from "react-router";
 import { GlobalContext } from "../context";
 
 export default function Details() {
-  const { recipeDetailsData, setRecipeDetailsData } = useContext(GlobalContext);
+  const {
+    recipeDetailsData,
+    setRecipeDetailsData,
+    addToFavorite,
+    favoriteList,
+  } = useContext(GlobalContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -38,9 +43,33 @@ export default function Details() {
           {recipeDetailsData?.title}
         </h3>
         <div>
-          <button className="capitalize p-3 px-3 border-none bg-gray-900 rounded-md text-white font-medium tracking-wide inline-block shadow-medium">
-            save as favorite
+          <button
+            onClick={() => addToFavorite(recipeDetailsData)}
+            className="capitalize p-3 px-3 border-none bg-gray-900 rounded-md text-white font-medium tracking-wide inline-block shadow-medium"
+          >
+            {favoriteList.findIndex(
+              (item) => item.id === recipeDetailsData.id
+            ) !== -1
+              ? "Remove from favorites"
+              : "Add to favorites"}
           </button>
+        </div>
+        <div>
+          <span className="text-2xl font-semibold text-black">
+            Ingredients:
+          </span>
+          <ul className="flex flex-col gap-3">
+            {recipeDetailsData?.ingredients.map((ingredient, index) => (
+              <li key={index}>
+                <span className="text-2xl  text-black">
+                  {ingredient.quantity} {ingredient.unit}
+                </span>
+                <span className="text-2xl font-semibold font-serif text-black mx-1">
+                  {ingredient.description}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

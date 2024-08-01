@@ -5,6 +5,8 @@ import RecipeItem from "../components/RecipeItem";
 export default function Home() {
   const { loading, recipeList } = useContext(GlobalContext);
 
+  console.log(loading);
+
   if (loading)
     return (
       <div className="text-black text-center text-2xl font-sans">

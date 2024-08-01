@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router";
 
 export const GlobalContext = createContext(null);
 
@@ -10,6 +11,9 @@ export default function GlobalState({ children }) {
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
   const [favoriteList, setFavoriteList] = useState([]);
 
+
+ const navigate = useNavigate()
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -18,11 +22,11 @@ export default function GlobalState({ children }) {
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`
       );
       const data = await res.json();
-      console.log(data);
       if (data?.data?.recipes) {
         setRecipeList(data?.data?.recipes);
         setLoading(false);
         setSearchParam("");
+        navigate('/')
       }
     } catch (error) {
       console.log(error);
@@ -32,7 +36,6 @@ export default function GlobalState({ children }) {
   }
 
   function addToFavorite(currentItem) {
-    console.log(currentItem);
     let favoriteListCopy = [...favoriteList];
     const index = favoriteListCopy.findIndex(
       (item) => item.id === currentItem.id

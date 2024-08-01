@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router";
 
 export const GlobalContext = createContext(null);
 
@@ -10,8 +9,6 @@ export default function GlobalState({ children }) {
   const [recipeList, setRecipeList] = useState([]);
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
   const [favoriteList, setFavoriteList] = useState([]);
-
-  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,7 +22,6 @@ export default function GlobalState({ children }) {
         setRecipeList(data?.data?.recipes);
         setLoading(false);
         setSearchParam("");
-        navigate("/");
       }
     } catch (error) {
       console.log(error);

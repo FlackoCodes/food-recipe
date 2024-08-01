@@ -43,7 +43,6 @@ Renders the main application wrapped in the GlobalState provider.
 GlobalState.jsx
 Provides global state management for the app using React's Context API.
 
-
 Manages state for search parameters, loading state, recipe list, recipe details, and favorite recipes.
 
 Contains functions for handling recipe search, adding/removing favorite recipes.
@@ -61,18 +60,22 @@ Displays a list of favorite recipes.
 API
 Forkify API: Used to fetch recipe data.
 Endpoint: https://forkify-api.herokuapp.com/api/v2/recipes?search={searchParam}
-Dependencies
+<br>
+
+Dependencies <br>
 React: Library for building user interfaces.
+<br>
 React Router: For handling navigation.
+<br>
 Tailwind CSS: Utility-first CSS framework for styling.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
 <br>
 Contributing
 Fork the repository.
 Create a new branch.
 Make your changes.
 Submit a pull request.
+<br>
 Author
 
 - <a href="https://github.com/FlackoCodes">Flacko</a>

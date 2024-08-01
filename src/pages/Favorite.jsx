@@ -5,8 +5,6 @@ import RecipeItem from "../components/RecipeItem";
 export default function Favorite() {
   const { favoriteList } = useContext(GlobalContext);
 
-  console.log(`${favoriteList} this` );
-
   return (
     <div className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
       {favoriteList && favoriteList.length ? (

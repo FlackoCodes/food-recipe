@@ -11,8 +11,7 @@ export default function GlobalState({ children }) {
   const [recipeDetailsData, setRecipeDetailsData] = useState(null);
   const [favoriteList, setFavoriteList] = useState([]);
 
-
- const navigate = useNavigate()
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -26,7 +25,7 @@ export default function GlobalState({ children }) {
         setRecipeList(data?.data?.recipes);
         setLoading(false);
         setSearchParam("");
-        navigate('/')
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
